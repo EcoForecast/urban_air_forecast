@@ -626,7 +626,9 @@ pm25_all <- targets %>%
   summarise(pm25 = mean(observation, na.rm = TRUE), .groups = "drop") %>%
   filter(!is.na(pm25))
 
-sites <- get_sites_to_run(pm25_all)
+# hard coding to only include site 25-025-0042
+#sites <- get_sites_to_run(pm25_all)
+sites <- "25-025-0042"
 message("Sites to run: ", paste(sites, collapse = ", "))
 
 results <- map(sites, ~ run_da_one_site(.x, targets, site_meta))
