@@ -34,6 +34,12 @@ jobs:
           path: outputs/milestone5/**
           if-no-files-found: error
 
+      - name: Use API keys
+        env:
+          OSN_KEY: ${{ secrets.OSN_KEY }}
+          OSN_SECRET: ${{ secrets.OSN_SECRET }}
+        run: echo "API keys for BU S3 bucket set"
+
       - name: Run milestone 8 data assimilation
         run: Rscript Main_milestone8.R
 
